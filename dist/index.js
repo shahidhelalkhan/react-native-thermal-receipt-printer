@@ -121,7 +121,6 @@ export var USBPrinter = {
             return console.warn(error);
         });
     },
-
     printLabel: function (text) {
         return RNUSBPrinter.printLabel(text, function (error) {
             return console.warn(error);
