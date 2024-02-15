@@ -477,29 +477,7 @@ public class USBPrinterAdapter implements PrinterAdapter {
         return image;
     }
 
-
-
-        BitMatrix bitMatrix = null;
-        try {
-            bitMatrix = writer.encode(Value, com.google.zxing.BarcodeFormat.QR_CODE, 250, 250,
-                    ImmutableMap.of(EncodeHintType.MARGIN, 1));
-            int width = 250;
-            int height = 250;
-            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
-                    bmp.setPixel(i, j, bitMatrix.get(i, j) ? Color.BLACK : Color.WHITE);
-                }
-            }
-            return bmp;
-        } catch (WriterException e) {
-            // Log.e("QR ERROR", ""+e);
-
-        }
-
-        return null;
-    }
+       
 
     @Override
     public void printQrCode(String qrCode, Callback errorCallback) {
