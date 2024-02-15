@@ -34,11 +34,12 @@ const line_bytes = Buffer.from([10, 10, 10, 10, 10]);
 
 const encoding_mappings_bytes = {
   // single byte encodings
-  "CP437": Buffer.from([27, 116, 0]),
+  CP437: Buffer.from([27, 116, 0]),
   // multiple bit encodings
-  "GB18030": Buffer.from([28, 38, 28, 67, 0]),
-  "BIG5": Buffer.from([28, 38, 28, 67, 1]),
-  "UTF8": Buffer.from([28, 38, 28, 67, 255]),
+  GB18030: Buffer.from([28, 38, 28, 67, 0]),
+  BIG5: Buffer.from([28, 38, 28, 67, 1]),
+  UTF8: Buffer.from([28, 38, 28, 67, 255]),
+  "ISO-8859-6": Buffer.from([28, 38, 28, 67, 6]),
 };
 
 const options_controller = {
@@ -90,10 +91,13 @@ export function exchange_text(text: string, options: IOptions): Buffer {
   bytes.concat(init_printer_bytes);
 
   // set encoding
-  if (m_options["encoding"] && options_controller["encoding"][m_options["encoding"]]) {
+  if (
+    m_options["encoding"] &&
+    options_controller["encoding"][m_options["encoding"]]
+  ) {
     bytes.concat(options_controller["encoding"][m_options["encoding"]]);
   }
-  
+
   bytes.concat(default_space_bytes);
 
   let temp = "";
@@ -125,7 +129,10 @@ export function exchange_text(text: string, options: IOptions): Buffer {
   temp.length && bytes.concat(iconv.encode(temp, m_options.encoding));
 
   // check for "tailingLine" flag
-  if (typeof m_options["tailingLine"] === "boolean" && options_controller["tailingLine"]) {
+  if (
+    typeof m_options["tailingLine"] === "boolean" &&
+    options_controller["tailingLine"]
+  ) {
     bytes.concat(options_controller["tailingLine"]);
   }
 
