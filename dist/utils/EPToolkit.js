@@ -66,6 +66,7 @@ var default_options = {
     cut: true,
     tailingLine: true,
     encoding: "UTF8",
+    codepage: 22,
 };
 export function exchange_text(text, options) {
     var m_options = options || default_options;
@@ -79,7 +80,7 @@ export function exchange_text(text, options) {
     //   bytes.concat(options_controller["encoding"][m_options["encoding"]]);
     // }
     bytes.concat(default_space_bytes);
-    bytes.concat(Buffer.from([0x1b, 0x74, 22]));
+    bytes.concat(Buffer.from([0x1b, 0x74, options.codepage]));
     var temp = "";
     for (var i = 0; i < text.length; i++) {
         var ch = text[i];

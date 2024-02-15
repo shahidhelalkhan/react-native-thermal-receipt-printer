@@ -75,6 +75,7 @@ type IOptions = {
   cut: boolean;
   tailingLine: boolean;
   encoding: string;
+  codepage: number;
 };
 
 const default_options: IOptions = {
@@ -82,6 +83,7 @@ const default_options: IOptions = {
   cut: true,
   tailingLine: true,
   encoding: "UTF8",
+  codepage: 22,
 };
 
 export function exchange_text(text: string, options: IOptions): Buffer {
@@ -99,7 +101,7 @@ export function exchange_text(text: string, options: IOptions): Buffer {
   // }
 
   bytes.concat(default_space_bytes);
-  bytes.concat(Buffer.from([0x1b, 0x74, 22]));
+  bytes.concat(Buffer.from([0x1b, 0x74, options.codepage]));
 
   let temp = "";
   for (let i = 0; i < text.length; i++) {
