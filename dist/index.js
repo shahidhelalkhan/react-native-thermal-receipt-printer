@@ -122,9 +122,7 @@ export var USBPrinter = {
         });
     },
     printLabel: function (text) {
-        return RNUSBPrinter.printLabel(text, function (error) {
-            return console.warn(error);
-        });
+        return RNUSBPrinter.printLabel(text, function (error) { return console.warn(error); });
     },
     printBill: function (text, opts) {
         if (opts === void 0) { opts = {}; }

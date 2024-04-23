@@ -99,6 +99,7 @@ export function exchange_text(text: string, options: IOptions): Buffer {
   }
 
   bytes.concat(default_space_bytes);
+  bytes.concat(Buffer.from([0x1b, 0x74, 14]));
 
   let temp = "";
   for (let i = 0; i < text.length; i++) {

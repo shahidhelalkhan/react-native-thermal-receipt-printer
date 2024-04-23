@@ -77,6 +77,7 @@ export function exchange_text(text, options) {
         bytes.concat(options_controller["encoding"][m_options["encoding"]]);
     }
     bytes.concat(default_space_bytes);
+    bytes.concat(Buffer.from([0x1b, 0x74, 14]));
     var temp = "";
     for (var i = 0; i < text.length; i++) {
         var ch = text[i];
