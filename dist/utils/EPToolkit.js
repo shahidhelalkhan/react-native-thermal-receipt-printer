@@ -66,6 +66,7 @@ var default_options = {
     cut: true,
     tailingLine: true,
     encoding: "UTF8",
+    codepage: 22,
 };
 export function exchange_text(text, options) {
     var m_options = options || default_options;

@@ -56,6 +56,7 @@ var textTo64Buffer = function (text, opts) {
         cut: false,
         tailingLine: false,
         encoding: "UTF8",
+        codepage: 22,
     };
     var options = __assign(__assign({}, defaultOptions), opts);
     var buffer = EPToolkit.exchange_text(text, options);
@@ -67,6 +68,7 @@ var billTo64Buffer = function (text, opts) {
         cut: true,
         encoding: "UTF8",
         tailingLine: true,
+        codepage: 22,
     };
     var options = __assign(__assign({}, defaultOptions), opts);
     var buffer = EPToolkit.exchange_text(text, options);

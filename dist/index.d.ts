@@ -4,6 +4,7 @@ export interface PrinterOptions {
     cut?: boolean;
     tailingLine?: boolean;
     encoding?: string;
+    codepage?: number;
 }
 export interface IUSBPrinter {
     device_name: string;
