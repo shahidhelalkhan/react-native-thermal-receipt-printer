@@ -68,11 +68,6 @@ public class RNUSBPrinterModule extends ReactContextBaseJavaModule implements RN
         adapter.printImageData(imageUrl, errorCallback);
     }
 
-    @ReactMethod
-    @Override
-    public void printLabel(String testData, Callback errorCallback) {
-        adapter.printLabel(testData, errorCallback);
-    }
 
     @ReactMethod
     @Override
