@@ -93,15 +93,15 @@ export function exchange_text(text: string, options: IOptions): Buffer {
   bytes.concat(init_printer_bytes);
 
   // set encoding
-  if (
-    m_options["encoding"] &&
-    options_controller["encoding"][m_options["encoding"]]
-  ) {
-    bytes.concat(options_controller["encoding"][m_options["encoding"]]);
-  }
+  // if (
+  //   m_options["encoding"] &&
+  //   options_controller["encoding"][m_options["encoding"]]
+  // ) {
+  //   bytes.concat(options_controller["encoding"][m_options["encoding"]]);
+  // }
 
   bytes.concat(default_space_bytes);
-  bytes.concat(Buffer.from([0x1b, 0x74, 14]));
+  bytes.concat(Buffer.from([0x1b, 0x74, options.codepage]));
 
   let temp = "";
   for (let i = 0; i < text.length; i++) {
