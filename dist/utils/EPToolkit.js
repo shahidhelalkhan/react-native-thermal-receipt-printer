@@ -34,7 +34,7 @@ var encoding_mappings_bytes = {
     BIG5: Buffer.from([28, 38, 28, 67, 1]),
     UTF8: Buffer.from([28, 38, 28, 67, 255]),
     "ISO-8859-6": Buffer.from([28, 38, 28, 67, 6]),
-    "Windows-1256": Buffer.from([28, 38, 28, 67, 200]),
+    "Windows-1256": Buffer.from([28, 38, 28, 66, 200, 0]),
 };
 var options_controller = {
     cut: cut_bytes,
